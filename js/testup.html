@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script> 
+    <script src="s3upload.js"></script>
+    <script src="uploadextra.js"></script>
+<style>
+    .custom-file{
+        margin-bottom: 10px;
+    }
+    .card{
+        padding: 60px;
+        margin: 50px;
+        width: 400px;
+    }
+    #outputimg{
+        max-width: 300px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="card">
+        
+        <input id="ue" type="hidden" value="new11@new.new">
+        <input id="up" type="hidden" value="as">
+        
+        <div id="outputimg"></div>
+        
+        <div class="custom-file">
+          <input id="up1" type="file" upload-filename="uuidtest-asbsad896sabjkh" class="custom-file-input s3upload" aria-describedby="inputGroupFileAddon01" onchange="previewImage(this);">
+          <label class="custom-file-label" for="up1">Choose File</label>
+        </div>
+        
+        <button target="up1" class="s3btn" before="beforetest();" after="aftertest();">Submit</button>
+        
+    </div>
+</body>
+
+<script>
+    function beforetest(){
+        console.log("before");
+    }
+    
+    function aftertest(){
+        console.log("after");
+    }
+</script>
+
+</html>
+
