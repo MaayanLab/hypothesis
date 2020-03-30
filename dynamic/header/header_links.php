@@ -75,13 +75,20 @@
     <li id="home_link" class="nav-item">
       <a class="nav-underline nav-link" href="index.php"> <i class="menuicon fas fa-home d-lg-none"></i>Home</a>
     </li>
+    <?php
+      if(isset($_SESSION["username"])){
+    ?>
     <li id="submissions_link" class="nav-item">
       <a class="nav-underline nav-link" href="index.php?nav=submissions"><i class="menuicon fas fa-share-square d-lg-none"></i>Submissions</a>
     </li>
     <li id="message_link" class="nav-item">
       <a class="nav-underline nav-link" href="index.php?nav=message"><i class="menuicon fas fa-envelope-open-text d-lg-none"></i>Messages</a>
     </li>
+
+    <?php
+      }
+    ?>
     <li id="prediction_link" class="nav-item">
-      <a class="nav-underline nav-link" href="index.php?nav=prediction&domain=phenotype"><i class="menuicon fas fa-chart-area d-lg-none"></i></i>Phenotype Predictions</a>
+      <a class="nav-underline nav-link" href="index.php?nav=prediction&domain=phenotype"><i class="menuicon fas fa-chart-area d-lg-none"></i></i>Predictions</a>
     </li>
 </ul>

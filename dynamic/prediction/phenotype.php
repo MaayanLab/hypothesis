@@ -30,7 +30,8 @@
     .benchmarkicon{
         position: relative;
         margin-top: -20px;
-        margin-left: -30px;
+        margin-left: 0px;
+        margin-right: 30px;
     }
     .datestr{
         font-size: 12px;
@@ -178,7 +179,15 @@
     .odd{
         background-color: #fff !important;
     }
-    
+    .highdata{
+        float: left;
+        margin-right: 10px;
+    }
+    .datahighlights{
+        margin: 15px;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15) !important;
+    }
 </style>
 
 
@@ -194,7 +203,7 @@
     $title = "";
     
     if($domain == "phenotype"){
-        $title = "IMPC: Mouse Phenotype";
+        $title = "Mouse Phenotype";
     }
     else if($domain == "pathway"){
         $title = "KEGG: Pathway";
@@ -204,15 +213,14 @@
     }
 ?>
 
-
-
-
 <div class="row pintro">
     <div class="col-12">
-        <h2 class="predictionheader"><img class="benchmarkicon" src="images/speedometer.svg" width=70><?php echo $title;?> Predictions</h2>
+    
+        <h2 class="predictionheader"><img class="benchmarkicon" src="images/IMPC_logo.svg" width=180><?php echo $title;?> Predictions</h2>
             Encyclopaedia of phenotypes from knockout mice. The International Mouse Phenotyping Consortium (IMPC) is an international scientific endeavour to create and characterize the phenotype of 20,000 knockout mouse strains.
             The following predictions associate genes with phenotypes catalouged by the IMPC. <a href="https://www.mousephenotype.org/">https://www.mousephenotype.org/</a>
         <button type="button" class="btn btn-primary submitbtn d-none d-md-block" onclick="addphenotypeprediction()">+ Submit Prediction</button>
+    
     </div>
     <div class="col-12 d-md-none"><button type="button" class="btn btn-primary maxbtn" onclick="addphenotypeprediction()">+ Submit Prediction</button></div>
     
@@ -229,12 +237,19 @@
         </p>
     </div>
     
+<div class="datahighlights">
+<h2>Training Data Highlights</h2>
+<p>These are example datafiles that can be used to make phenotype predictions. These datasets are meant to get you started, but models do not have to be restricted by them. Explore other prediction projects to get ideas which datasets to use or share your own data resources for others to use.</p>
+<button type="button" class="btn btn-primary highdata d-none d-md-block" onclick="addphenotypeprediction()">MGI Mouse Phenotype GMT</button>
+<button type="button" class="btn btn-primary highdata d-none d-md-block" onclick="addphenotypeprediction()">ARCHS4 co-expression</button>
+<button type="button" class="btn btn-primary highdata d-none d-md-block" onclick="addphenotypeprediction()">Tagger gene co-occurrence</button>
+
+</div>
+
     <div class="col-12 timelinecontainer">
         <h4>Upcoming IMPC data releases</h4>
-        
-        
+
         <?php include "dynamic/prediction/phenotimeline.php"; ?>
-        
         
     </div>
 </div>
@@ -277,7 +292,7 @@
         $counter = $counter +1;
         $data[6] = round(100*$data[6],4);
 ?>
-    <tr onmouseenter="highlight(this);" onmouseleave="rmhighlight(this);">
+    <tr onmouseenter="highlight(this);" onmouseleave="rmhighlight(this);" onclick="showhighlight(this);">
         <td class="ranktd">
             <?php echo $counter;?>
         </td>
@@ -313,6 +328,9 @@
 <script src="js/benchhistogram.js"></script>
 
 <script>
+    function showhighlight(element){
+        window.open("http://localhost:8888/index.php?nav=highlight");
+    }
     function highlight(element){
         var rank = element.getElementsByClassName("ranktd")[0].innerHTML.trim();
         $("#rank"+rank).css({ fill: "#45ffca" });
